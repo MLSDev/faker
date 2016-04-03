@@ -13,24 +13,36 @@ module Faker
       end
 
       def first_name
-        fetch('name.first_name')
+        if parse('name.first_name').empty?
+          fetch('name.first_name')
+        else
+          parse('name.first_name')
+        end
       end
 
-      def last_name 
+      def male_first_name
+        fetch('name.male_first_name')
+      end
+
+      def female_first_name
+        fetch('name.female_first_name')
+      end
+
+      def last_name
         fetch('name.last_name')
       end
 
-      def prefix 
+      def prefix
         fetch('name.prefix')
       end
 
-      def suffix 
+      def suffix
         fetch('name.suffix')
       end
 
       # Generate a buzzword-laden job title
       # Wordlist from http://www.bullshitjob.com/title/
-      def title 
+      def title
         "#{fetch('name.title.descriptor')} #{fetch('name.title.level')} #{fetch('name.title.job')}"
       end
 
